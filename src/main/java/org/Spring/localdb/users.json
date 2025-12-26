@@ -1,37 +1,101 @@
-[{
-  "user_id":"abcdefgh",
-  "name":"Vivek Kushwaha",
-  "password":"12345",
-  "hashed_password":"$2a$10$MqonEcizso4Re9iFEMajHOIHCUd5O3Q.XZX779C50ZnC/Hb6mirwW",
-  "tickets_booked":[{
-    "ticket_id":"your_ticket_id",
-    "user_id":"abcdefgh",
-    "source":"Bangalore",
-    "destination":"Delhi",
-    "date_of_travel":"2023-12-08T18:30:00Z",
-    "train":{
-       "train_id":"bacs",
-      "train_no":"12345",
-      "seats":[
-        [0,0,0,0,0,0],
-        [0,0,0,0,0,0],
-        [0,0,0,0,0,0],
-        [0,0,0,0,0,0]
-      ],
-      "station_times":{
-        "Bangalore":"13:50:00",
-        "Jaipur":"13:50:00",
-        "Delhi":"13:50:00"
+[ {
+  "name" : "Vivek Kushwaha",
+  "password" : "12345",
+  "hashed_password" : "$2a$10$MqonEcizso4Re9iFEMajHOIHCUd5O3Q.XZX779C50ZnC/Hb6mirwW",
+  "tickets_booked" : [ {
+    "ticket_id" : "your_ticket_id",
+    "user_id" : "abcdefgh",
+    "source" : "Bangalore",
+    "destination" : "Delhi",
+    "date_of_travel" : [ 2023, 12, 8 ],
+    "train" : {
+      "train_id" : "bacs",
+      "train_no" : "12345",
+      "seats" : [ [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ] ],
+      "station_times" : {
+        "Bangalore" : "13:50:00",
+        "Jaipur" : "13:50:00",
+        "Delhi" : "13:50:00"
       },
-      "stations":["Bangalore","Jaipur","Delhi"],
-      "train_info":"Train ID: bacs Train No: 12345"},
-    "ticket_info":"Ticket ID: your_ticket_id belongs to User abcdefgh from Bangalore to Delhi on 2023-12-08T18:30:00Z"
-  }]
-},
-
-  {"name":"rahul",
-    "password":"hhbb11",
-    "hashed_password":"$2a$10$O/OWE.xh3gttMANiM4BIX.mo.4/myik1J739DZ25ecVENk8xhMCW2",
-    "tickets_booked":[],
-    "user_id":"fe46da4d-c8d1-4229-97e6-600dce6941e8"
-  }]
+      "stations" : [ "Bangalore", "Jaipur", "Delhi" ],
+      "train_info" : "Train ID: bacs Train No: 12345"
+    },
+    "ticket_info" : "Ticket ID: your_ticket_id | User: abcdefgh | Bangalore → Delhi | Date: 2023-12-08 | Train: bacs"
+  } ],
+  "user_id" : "abcdefgh"
+}, {
+  "name" : "rahul",
+  "password" : "hhbb11",
+  "hashed_password" : "$2a$10$O/OWE.xh3gttMANiM4BIX.mo.4/myik1J739DZ25ecVENk8xhMCW2",
+  "tickets_booked" : [ ],
+  "user_id" : "fe46da4d-c8d1-4229-97e6-600dce6941e8"
+}, {
+  "name" : "vivek",
+  "password" : null,
+  "hashed_password" : "$2a$12$kSXcRMX8IzJ7hbsOklAf6OkFeeww3g.xD1AmNTPrHbteAny6EuKd.",
+  "tickets_booked" : [ {
+    "ticket_id" : "d8e70aa2-ea7d-4e2b-bcf6-2bf3327e85d2",
+    "user_id" : "15e084d4-1c1d-439b-ab45-35c3b83ed277",
+    "source" : "bangalore",
+    "destination" : "delhi",
+    "date_of_travel" : [ 2025, 12, 26 ],
+    "train" : {
+      "train_id" : "bacs",
+      "train_no" : "12345",
+      "seats" : [ [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ] ],
+      "station_times" : {
+        "bangalore" : "13:50:00",
+        "jaipur" : "18:30:00",
+        "vidisha" : "05:10:00",
+        "basoda" : "05:45:00",
+        "bhopal" : "06:30:00",
+        "delhi" : "20:15:00"
+      },
+      "stations" : [ "bangalore", "jaipur", "vidisha", "basoda", "bhopal", "delhi" ],
+      "train_info" : "Train ID: bacs Train No: 12345"
+    },
+    "ticket_info" : "Ticket ID: d8e70aa2-ea7d-4e2b-bcf6-2bf3327e85d2 | User: 15e084d4-1c1d-439b-ab45-35c3b83ed277 | bangalore → delhi | Date: 2025-12-26 | Train: bacs"
+  }, {
+    "ticket_id" : "246a83e9-9432-46ea-8604-be61e68ef250",
+    "user_id" : "15e084d4-1c1d-439b-ab45-35c3b83ed277",
+    "source" : "bangalore",
+    "destination" : "delhi",
+    "date_of_travel" : [ 2025, 12, 26 ],
+    "train" : {
+      "train_id" : "bacs",
+      "train_no" : "12345",
+      "seats" : [ [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 1 ], [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0 ] ],
+      "station_times" : {
+        "bangalore" : "13:50:00",
+        "jaipur" : "18:30:00",
+        "vidisha" : "05:10:00",
+        "basoda" : "05:45:00",
+        "bhopal" : "06:30:00",
+        "delhi" : "20:15:00"
+      },
+      "stations" : [ "bangalore", "jaipur", "vidisha", "basoda", "bhopal", "delhi" ],
+      "train_info" : "Train ID: bacs Train No: 12345"
+    },
+    "ticket_info" : "Ticket ID: 246a83e9-9432-46ea-8604-be61e68ef250 | User: 15e084d4-1c1d-439b-ab45-35c3b83ed277 | bangalore → delhi | Date: 2025-12-26 | Train: bacs"
+  }, {
+    "ticket_id" : "4cb768c1-fc6b-4e66-8679-208e8455e94b",
+    "user_id" : "15e084d4-1c1d-439b-ab45-35c3b83ed277",
+    "source" : "basoda",
+    "destination" : "bhopal",
+    "date_of_travel" : [ 2025, 12, 26 ],
+    "train" : {
+      "train_id" : "mp_exp_11407",
+      "train_no" : "11407",
+      "seats" : [ [ 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0 ] ],
+      "station_times" : {
+        "basoda" : "06:00:00",
+        "vidisha" : "06:40:00",
+        "bhopal" : "07:45:00"
+      },
+      "stations" : [ "basoda", "vidisha", "bhopal" ],
+      "train_info" : "Train ID: mp_exp_11407 Train No: 11407"
+    },
+    "ticket_info" : "Ticket ID: 4cb768c1-fc6b-4e66-8679-208e8455e94b | User: 15e084d4-1c1d-439b-ab45-35c3b83ed277 | basoda → bhopal | Date: 2025-12-26 | Train: mp_exp_11407"
+  } ],
+  "user_id" : "15e084d4-1c1d-439b-ab45-35c3b83ed277"
+} ]

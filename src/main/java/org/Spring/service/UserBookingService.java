@@ -16,7 +16,7 @@ import java.util.*;
 public class UserBookingService {
 
     private static final String USER_FILE_PATH =
-            "app/src/main/java/ticket/booking/localDb/users.json";
+            "src/main/java/org/Spring/localdb/users.json";
 
     private final ObjectMapper objectMapper;
     private final File userFile;

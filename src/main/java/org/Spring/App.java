@@ -17,18 +17,20 @@ public class App {
     public static void main(String[] args) {
 
         System.out.println("🚆 Train Booking System");
+        System.out.println("=== MAIN METHOD STARTED ===");
+
         Scanner scanner = new Scanner(System.in);
 
         UserBookingService userBookingService;
         try {
             userBookingService = new UserBookingService();
         } catch (IOException ex) {
-            System.out.println("❌ Failed to start application");
+            ex.printStackTrace();
+            System.out.println("❌ Failed to load user database");
             return;
         }
 
         Train selectedTrain = null;
-        int option;
 
         while (true) {
             System.out.println("""
@@ -43,16 +45,18 @@ public class App {
                     7. Exit
                     """);
 
-            option = scanner.nextInt();
+            int option = scanner.nextInt();
+            scanner.nextLine(); // 🔥 IMPORTANT
 
             try {
                 switch (option) {
 
                     case 1 -> {
                         System.out.print("Username: ");
-                        String username = scanner.next();
+                        String username = scanner.nextLine();
+
                         System.out.print("Password: ");
-                        String password = scanner.next();
+                        String password = scanner.nextLine();
 
                         User user = new User(
                                 username,
@@ -70,17 +74,12 @@ public class App {
 
                     case 2 -> {
                         System.out.print("Username: ");
-                        String username = scanner.next();
-                        System.out.print("Password: ");
-                        String password = scanner.next();
+                        String username = scanner.nextLine();
 
-                        User loginUser = new User(
-                                username,
-                                password,
-                                null,
-                                null,
-                                null
-                        );
+                        System.out.print("Password: ");
+                        String password = scanner.nextLine();
+
+                        User loginUser = new User(username, password, null, null, null);
 
                         boolean loggedIn = userBookingService.login(loginUser);
                         System.out.println(
@@ -99,21 +98,22 @@ public class App {
 
                     case 4 -> {
                         System.out.print("Source: ");
-                        String source = scanner.next();
+                        String source = scanner.nextLine().trim().toLowerCase();
+
                         System.out.print("Destination: ");
-                        String destination = scanner.next();
+                        String destination = scanner.nextLine().trim().toLowerCase();
 
                         List<Train> trains =
                                 userBookingService.searchTrains(source, destination);
 
                         if (trains.isEmpty()) {
-                            System.out.println("No trains found");
+                            System.out.println("❌ No trains found");
                             break;
                         }
 
                         for (int i = 0; i < trains.size(); i++) {
                             Train t = trains.get(i);
-                            System.out.println((i + 1) + ". Train ID: " + t.getTrainId());
+                            System.out.println((i + 1) + ". Train No: " + t.getTrainNo());
                             for (Map.Entry<String, String> e : t.getStationTimes().entrySet()) {
                                 System.out.println("   " + e.getKey() + " -> " + e.getValue());
                             }
@@ -121,6 +121,7 @@ public class App {
 
                         System.out.print("Select train (1-" + trains.size() + "): ");
                         selectedTrain = trains.get(scanner.nextInt() - 1);
+                        scanner.nextLine();
                     }
 
                     case 5 -> {
@@ -137,18 +138,21 @@ public class App {
 
                         System.out.print("Row: ");
                         int row = scanner.nextInt();
+
                         System.out.print("Seat: ");
                         int seat = scanner.nextInt();
+                        scanner.nextLine();
 
                         System.out.print("Travel date (YYYY-MM-DD): ");
-                        LocalDate date = LocalDate.parse(scanner.next());
+                        LocalDate date = LocalDate.parse(scanner.nextLine());
 
                         boolean booked = userBookingService.bookTrainSeat(
                                 selectedTrain,
                                 row,
                                 seat,
                                 selectedTrain.getStations().get(0),
-                                selectedTrain.getStations().get(selectedTrain.getStations().size() - 1),
+                                selectedTrain.getStations()
+                                        .get(selectedTrain.getStations().size() - 1),
                                 date
                         );
 
@@ -159,7 +163,7 @@ public class App {
 
                     case 6 -> {
                         System.out.print("Enter Ticket ID to cancel: ");
-                        String ticketId = scanner.next();
+                        String ticketId = scanner.nextLine();
                         boolean cancelled = userBookingService.cancelBooking(ticketId);
                         System.out.println(
                                 cancelled ? "✅ Ticket cancelled" : "❌ Ticket not found"

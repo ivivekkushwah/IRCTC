@@ -14,12 +14,11 @@ import java.util.Optional;
 public class TrainService {
 
     private static final String TRAIN_DB_PATH =
-            "app/src/main/java/ticket/booking/localDb/trains.json";
+            "src/main/java/org/Spring/localdb/train.json";
 
     private final ObjectMapper objectMapper;
     private final File trainFile;
-
-    private List<Train> trains;
+    private final List<Train> trains;
 
     /* =========================
        Constructor
@@ -36,9 +35,25 @@ public class TrainService {
        ========================= */
 
     public List<Train> searchTrains(String source, String destination) {
-        return trains.stream()
-                .filter(train -> isValidRoute(train, source, destination))
-                .toList();
+
+        // 🔥 NORMALIZE INPUT ONCE
+        source = source.trim().toLowerCase();
+        destination = destination.trim().toLowerCase();
+
+        List<Train> result = new ArrayList<>();
+
+        for (Train train : trains) {
+
+            // 🔎 DEBUG (keep while testing)
+            System.out.println("Checking train " + train.getTrainNo());
+            System.out.println("Stations: " + train.getStations());
+
+            if (isValidRoute(train, source, destination)) {
+                result.add(train);
+            }
+        }
+
+        return result;
     }
 
     public void saveOrUpdateTrain(Train train) throws IOException {
@@ -67,7 +82,6 @@ public class TrainService {
         if (!trainFile.exists()) {
             return new ArrayList<>();
         }
-
         return objectMapper.readValue(trainFile, new TypeReference<>() {});
     }
 
@@ -77,14 +91,20 @@ public class TrainService {
     }
 
     /* =========================
-       Validation Logic
+       Validation Logic (FIXED)
        ========================= */
 
     private boolean isValidRoute(Train train, String source, String destination) {
-        List<String> stations = train.getStations();
 
-        int sourceIndex = stations.indexOf(source.toLowerCase());
-        int destinationIndex = stations.indexOf(destination.toLowerCase());
+        List<String> stations = train.getStations()
+                .stream()
+                .map(String::toLowerCase)
+                .toList();
+
+        int sourceIndex = stations.indexOf(source);
+        int destinationIndex = stations.indexOf(destination);
+
+        System.out.println("srcIndex=" + sourceIndex + ", destIndex=" + destinationIndex);
 
         return sourceIndex >= 0
                 && destinationIndex >= 0
@@ -109,6 +129,5 @@ public class TrainService {
                 .findAndAddModules()
                 .build();
     }
-
-
 }
+
